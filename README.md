@@ -161,7 +161,7 @@ function printWelcome() {
 
 function handleCardNumber(input) {
   const num = parseInt(input, 10);
-  if (isNaN(num) || !correctAnswers[num]) {
+  if (isNaN(num) || !correctAnswers.hasOwnProperty(num)) {
     appendLine(`❌ Card ${input} not found.`);
     currentCard = null;
     waitingForAnswer = false;
