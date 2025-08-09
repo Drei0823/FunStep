@@ -1,6 +1,6 @@
 <script>
-const correctAnswers = {
-  // ... (keep your same question set)
+const correctAnswers = { 
+  /* keep your same card data here */ 
 };
 
 let currentCard = null;
@@ -16,27 +16,18 @@ function appendLine(text) {
   terminal.scrollTop = terminal.scrollHeight;
 }
 
-function normalize(str) {
-  return str
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .replace(/≥/g, ">=")
-    .replace(/≤/g, "<=")
-    .trim();
-}
-
 function printWelcome() {
   appendLine("Welcome to FunStep!");
   appendLine("Step 1: Type the card number to see the question.");
-  appendLine("Step 2: Type the answer.");
+  appendLine("Step 2: Type the answer exactly as it should be.");
 }
 
 function handleCardNumber(input) {
-  const num = parseInt(input);
-  if (isNaN(num)) {
-    appendLine(`❌ Please enter a valid card number.`);
+  if (!/^\d+$/.test(input)) {
+    appendLine("❌ Please enter a valid card number.");
     return;
   }
+  const num = parseInt(input, 10);
   if (!correctAnswers[num]) {
     appendLine(`❌ Card ${num} not found.`);
     return;
@@ -49,15 +40,15 @@ function handleCardNumber(input) {
 }
 
 function handleAnswer(input) {
-  const answer = normalize(input);
-  const validAnswers = correctAnswers[currentCard].answers.map(a => normalize(a));
-  
+  const answer = input.trim().toLowerCase();
+  const validAnswers = correctAnswers[currentCard].answers.map(a => a.toLowerCase());
+
   if (validAnswers.includes(answer)) {
     appendLine("✅ Correct!");
   } else {
-    appendLine(`❌ Wrong. Correct answer(s): ${correctAnswers[currentCard].answers.join(" or ")}`);
+    appendLine("❌ Wrong.");
   }
-  
+
   waitingForAnswer = false;
   currentCard = null;
   appendLine("Type another card number to continue.");
