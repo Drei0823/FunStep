@@ -78,7 +78,6 @@
 
 <script>
 const correctAnswers = {
-  // Level 1
   1: { question: "x/5 = 25", answers: ["125"] },
   2: { question: "x/4 = 30", answers: ["120"] },
   3: { question: "3x/2 = 180", answers: ["120"] },
@@ -90,7 +89,6 @@ const correctAnswers = {
   9: { question: "(x - 20)/8 = 15", answers: ["140"] },
   10: { question: "2x/5 = 60", answers: ["150"] },
 
-  // Level 2
   11: { question: "x/(x - 40) = 4/3", answers: ["160"] },
   12: { question: "(x - 20)/(x - 10) = 2", answers: ["100"] },
   13: { question: "3x/(x - 80) = 5/2", answers: ["200"] },
@@ -102,7 +100,6 @@ const correctAnswers = {
   19: { question: "(5x - 250)/(x - 25) = 10", answers: ["150"] },
   20: { question: "(x - 100)/(x - 50) = 3/2", answers: ["200"] },
 
-  // Level 3
   21: { question: "(x - 120)/(x - 50) > 0", answers: ["x > 120"] },
   22: { question: "(x - 150)/(x - 100) ≥ 0", answers: ["x ≥ 150"] },
   23: { question: "(x - 200)/(x - 80) < 0", answers: ["100 ≤ x < 200"] },
@@ -114,7 +111,6 @@ const correctAnswers = {
   29: { question: "((x - 125)^2)/(x - 100) ≥ 0", answers: ["x > 100"] },
   30: { question: "(x - 500)/(x - 300) ≤ 0", answers: ["100 ≤ x ≤ 500"] },
 
-  // Level 4
   31: { question: "(x² - 14400)/(x - 100) = 140", answers: ["220"] },
   32: { question: "(x² - 19600)/(x - 150) = 200", answers: ["250"] },
   33: { question: "(x² - 12100)/(x - 100) = 110", answers: ["210"] },
@@ -126,7 +122,6 @@ const correctAnswers = {
   39: { question: "(x² - 32400)/(x - 180) = 240", answers: ["300"] },
   40: { question: "(x² - 15625)/(x - 125) = 175", answers: ["250"] },
 
-  // Level 5
   41: { question: "(x³ - 64000)/(x - 40) = 5000", answers: ["140"] },
   42: { question: "((x - 100)(x - 300))/(x - 150) = 200", answers: ["400"] },
   43: { question: "(x² - 40000)/(x - 250) = 150", answers: ["350"] },
