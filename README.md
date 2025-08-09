@@ -72,7 +72,7 @@
     <div class="terminal" id="terminal"></div>
     <div class="term-input">
       <input id="termInput" placeholder="Type card number first" autocomplete="off">
-      <button onclick="sendCommand()">OK</button>
+      <button id="okBtn">OK</button>
     </div>
   </main>
 
@@ -144,6 +144,7 @@ let waitingForAnswer = false;
 
 const terminal = document.getElementById("terminal");
 const termInput = document.getElementById("termInput");
+const okBtn = document.getElementById("okBtn");
 
 function appendLine(text) {
   const div = document.createElement("div");
@@ -159,9 +160,12 @@ function printWelcome() {
 }
 
 function handleCardNumber(input) {
-  const num = parseInt(input);
-  if (!correctAnswers[num]) {
-    appendLine(`❌ Card ${num} not found.`);
+  const num = parseInt(input, 10);
+  if (isNaN(num) || !correctAnswers[num]) {
+    appendLine(`❌ Card ${input} not found.`);
+    currentCard = null;
+    waitingForAnswer = false;
+    termInput.placeholder = "Type card number first";
     return;
   }
   currentCard = num;
@@ -172,7 +176,7 @@ function handleCardNumber(input) {
 }
 
 function handleAnswer(input) {
-  const answer = input.toLowerCase();
+  const answer = input.trim().toLowerCase();
   const validAnswers = correctAnswers[currentCard].answers.map(a => a.toLowerCase());
   if (validAnswers.includes(answer)) {
     appendLine("✅ Correct!");
@@ -196,7 +200,10 @@ function sendCommand() {
     handleAnswer(value);
   }
   termInput.value = "";
+  termInput.focus();
 }
+
+okBtn.addEventListener("click", sendCommand);
 
 termInput.addEventListener("keydown", e => {
   if (e.key === "Enter") sendCommand();
